@@ -16,7 +16,8 @@ This macro:
 - Executes instantly within SolidWorks drawings
 
 ## Demo
-BalloonOrientation.gif
+
+![Balloon Orientation Macro Demo](BalloonOrientation.gif)
 
 ## How It Works
 1. User selects one or more drawing balloons
