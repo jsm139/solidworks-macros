@@ -22,7 +22,7 @@ The macro:
 - Executes instantly within SolidWorks
 
 ## Demo
-CenterDrawingView.gif
+![Center Drawing View Demo](CenterDrawingView.gif)
 
 ## How It Works (High-Level)
 1. User selects a drawing view
