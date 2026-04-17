@@ -6,28 +6,31 @@ components in a SolidWorks assembly to improve assembly validation and mate
 completeness checks.
 
 ## Problem
-In complex or fastener‑heavy assemblies, unintentionally floating components can
-be difficult to identify. While SolidWorks allows users to drag components to
-check for movement, it does not provide a native way to programmatically identify
-all under‑constrained components at once.
+SolidWorks provides an Advanced Component Selection tool that can be configured
+to identify components that have mates but remain under‑defined. However, using
+this tool requires navigating multiple menus, defining search criteria, and
+manually applying filters each time the check is needed.
 
-Manual inspection becomes increasingly inefficient as assembly size grows,
-especially when fixed, grounded, and Toolbox components coexist alongside
-components that are unintentionally free to move.
+In large or fastener‑heavy assemblies, repeatedly configuring Advanced Select can
+be disruptive to workflow, especially when the intent is simply to perform a
+quick, repeatable check for unintentionally floating components during design or
+review.
 
 ## Solution
-This macro evaluates the constraint status of **top‑level components only**
-(direct children of the root assembly) and automatically selects those that are
-under‑constrained.
+This macro encapsulates the Advanced Component Selection logic into a single,
+repeatable action.
 
-By intentionally ignoring fully constrained, fixed, grounded, and Toolbox
-components, the macro focuses exclusively on components that require engineering
-attention.
+By directly evaluating the constraint status of **top‑level components only**
+(direct children of the root assembly), the macro eliminates the need to open
+Advanced Select, define search criteria, and apply filters manually.
+
+The macro focuses exclusively on components that require engineering attention
+and ignores fully constrained, fixed, grounded, and Toolbox components by design.
 
 The macro:
 - Identifies under‑constrained top‑level components
 - Selects floating components in the graphics area
-- Ignores fixed, grounded, and Toolbox components
+- Eliminates manual Advanced Select setup steps
 - Avoids traversing into subassemblies
 - Provides non‑blocking progress feedback
 - Supports ESC key cancellation
@@ -45,9 +48,9 @@ The macro:
 6. Displays progress and a final selection summary
 
 ## Why This Matters
-- Quickly exposes unintentionally floating components
-- Eliminates repetitive manual drag‑testing
-- Improves assembly validation consistency
+- Reduces multi‑step Advanced Select workflows to a single action
+- Encourages frequent validation during assembly development
+- Improves consistency during design reviews
 - Scales effectively for large assemblies
 - Provides deterministic and repeatable results
 
@@ -55,4 +58,5 @@ The macro:
 - `SelectFloatingPart.swp` — Executable SolidWorks macro
 - `SelectFloatingPart.bas` — Readable source code
 
-*(Development and testing performed using non‑proprietary assemblies.)*
+*(Development and testing performed using a SolidWorks‑provided sample assembly
+included with the standard installation tutorials.)*
